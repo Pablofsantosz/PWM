@@ -1,10 +1,15 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import React from "react";
+import Head from "@/components/Head";
 
 export default function Home() {
   return (
     <div>
-        Ola turma 
+      <h1>Welcome to my app</h1>
+      <Head />
+      <Head />
+      <Head />
+      <Head />
+      <Head />
     </div>
   );
 }
