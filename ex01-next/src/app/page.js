@@ -8,6 +8,7 @@ export default function Home() {
   return (
     <div>
       <h1>Welcome to my app</h1>
+      
       <Head />
       <Exemplo />
       <p>This is a simple example of a Next.js application.</p>
