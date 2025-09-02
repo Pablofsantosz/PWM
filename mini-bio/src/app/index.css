@@ -4,4 +4,17 @@
     box-sizing: border-box;
     background-color: rgb(245, 245, 245);
 }
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+p{
+    font-size: 1.2rem;
+    color: rgba(17, 3, 67, 0.496);
+    text-align: center;
+    max-width: 600px;
+}
 

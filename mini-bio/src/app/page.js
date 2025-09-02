@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <>
-    <div>
+    <div className ="mains8">
     <Image
     src="/images/MinhaFoto.jpg"
     alt="Minha Foto"
