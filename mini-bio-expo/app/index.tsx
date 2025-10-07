@@ -9,7 +9,7 @@ export default function HomeScreen() {
       />
       <Text style={styles.nome}>Pablo Felipe dos Santos</Text>
 
-      {/* Correção aqui! Usamos <Text> aninhados para o negrito */}
+      
       <Text style={styles.bio}>
         "Studying a Bachelor's Degree in Computer Science (5th semester) at the Catholic University of Pernambuco (UNICAP). Passionate about software development and quality assurance, I'm always looking to improve my skills and contribute to meaningful projects. I develop using{' '}
         <Text style={styles.boldText}>
