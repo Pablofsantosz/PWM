@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     color: 'rgba(17, 3, 67, 0.496)',
     maxWidth: 600,
   },
-  // Novo estilo para o texto em negrito
   boldText: {
     fontWeight: 'bold',
   },
