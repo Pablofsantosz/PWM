@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
+      <Text style={styles.nome}>Pablo Felipe dos Santos</Text>
       <Image
         source={require('@/assets/images/MinhaFoto.jpg')}
         style={styles.minhaFoto}
       />
-      <Text style={styles.nome}>Pablo Felipe dos Santos</Text>
+      
 
       
       <Text style={styles.bio}>
