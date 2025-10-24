@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mini-bio-expo",
-    "slug": "mini-bio-expo",
+    "name": "Meu App com Paper",
+    "slug": "meu-app-com-paper",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

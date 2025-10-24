@@ -1,53 +1,119 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { Alert, StyleSheet, ScrollView, Pressable, View } from "react-native";
+import { Button, Card, Text, TextInput, Avatar } from 'react-native-paper';
 
-export default function HomeScreen() {
+export default function Index() {
+  const router = useRouter();
+  const [idade, onChangeIdade] = useState("");
+  const [showDetails, setShowDetails] = useState(true);
+  const anoNasc = idade ? new Date().getFullYear() - parseInt(idade) : null;
+
+  const handleOkPress = () => Alert.alert("Botão OK pressionado");
+  const handleCancelPress = () => Alert.alert("Botão Cancel pressionado");
+  const handleTaskListPress = () => router.navigate("/taskList");
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.nome}>Pablo Felipe dos Santos</Text>
-      <Image
-        source={require('@/assets/images/MinhaFoto.jpg')}
-        style={styles.minhaFoto}
-      />
-      
+    <ScrollView contentContainerStyle={styles.containerBase}>
+      <Text variant="displayMedium" style={styles.titleText}>Olá Turma!</Text>
 
-      
-      <Text style={styles.bio}>
-        "Studying a Bachelor's Degree in Computer Science (5th semester) at the Catholic University of Pernambuco (UNICAP). Passionate about software development and quality assurance, I'm always looking to improve my skills and contribute to meaningful projects. I develop using{' '}
-        <Text style={styles.boldText}>
-          Python, C#, JavaScript, C, Java,
-        </Text>
-        {' '}and use libraries and frameworks like React, Django, and Node.js to build impactful projects."
-      </Text>
-    </View>
+      <Avatar.Image
+        style={styles.avatar}
+        size={150}
+        source={require("@/assets/images/avatar.jpg")}
+      />
+
+      <Card style={styles.card}>
+        <Pressable onPress={() => setShowDetails(!showDetails)}>
+          <Card.Content>
+            <Text variant="bodyMedium" style={styles.descriptionText} numberOfLines={showDetails ? undefined : 2}>
+              Este é um App de exemplo da disciplina Programação Web e Mobile do
+              Curso de Ciência da Computação da Universidade Católica de Pernambuco
+              (semestre 2025.2)
+            </Text>
+          </Card.Content>
+        </Pressable>
+      </Card>
+
+      {anoNasc !== null && !isNaN(anoNasc) && (
+        <Text variant="bodyLarge" style={{ marginTop: 10 }}>Você nasceu em {anoNasc}</Text>
+      )}
+
+      <TextInput
+        label="Qual a sua idade?"
+        value={idade}
+        onChangeText={onChangeIdade}
+        keyboardType="numeric"
+        style={styles.input}
+        mode="outlined"
+        dense
+      />
+
+      <View style={styles.buttonContainer}>
+        <Button mode="contained" onPress={handleOkPress} style={styles.button}>
+          OK
+        </Button>
+        <Button mode="contained" onPress={handleCancelPress} style={styles.button}>
+          Cancel
+        </Button>
+      </View>
+
+      <Button
+        mode="contained"
+        onPress={handleTaskListPress}
+        style={styles.taskListButton}
+        icon="format-list-checks"
+      >
+        Ir para Lista de Tarefas
+      </Button>
+
+      <View style={{ height: 70 }} />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  containerBase: {
+    backgroundColor: "#FFFACD",
     alignItems: 'center',
-    padding: 20,
-    backgroundColor: 'rgb(245, 245, 245)',
+    paddingVertical: 15,
+    paddingHorizontal: 10,
   },
-  minhaFoto: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    marginBottom: 20,
-  },
-  nome: {
-    fontSize: 24,
+  titleText: {
     fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center'
+  },
+  avatar: {
+    marginBottom: 20,
+    backgroundColor: 'transparent',
+  },
+  card: {
+    width: '95%',
+    marginTop: 5,
     marginBottom: 10,
   },
-  bio: {
-    fontSize: 16,
+  descriptionText: {
     textAlign: 'center',
-    color: 'rgba(17, 3, 67, 0.496)',
-    maxWidth: 600,
+    paddingVertical: 5,
   },
-  boldText: {
-    fontWeight: 'bold',
+  input: {
+    width: '80%',
+    marginTop: 15,
+    textAlign: 'center',
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 15,
+    width: '80%',
+  },
+  button: {
+    marginHorizontal: 10,
+    flex: 1,
+  },
+  taskListButton: {
+    marginTop: 20,
+    width: '80%',
+  }
 });
